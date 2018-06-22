@@ -10,7 +10,7 @@ function Phrase(content) {
     this.content = content;
 
     this.processor = function(string) {
-        return string.toLowerCase();
+        return this.letters(string).toLowerCase();
     }
 
     // Returns content processed for palindrome testing
@@ -21,6 +21,12 @@ function Phrase(content) {
     // Makes the phrase LOUDER
     this.louder = function() {
         return this.content.toUpperCase();
+    }
+
+    // Returns the letters in the content
+    // e.g. new Phrase("Hello, world!").letters() === "Helloworld"
+    this.letters = function letters() {
+        return Array.from(this.content).filter(c => c.match(/[a-z]/i)).join("");
     }
 
     // Returns true for a palindrome, false otherwise
