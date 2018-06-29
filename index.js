@@ -1,6 +1,6 @@
 module.exports = Phrase;
 
-// Adds 'reverse to all strings
+// Adds 'reverse' to all strings
 String.prototype.reverse = function() {
     return Array.from(this).reverse().join("");
 }
@@ -31,7 +31,11 @@ function Phrase(content) {
 
     // Returns true for a palindrome, false otherwise
     this.palindrome = function palindrome() {
-        return this.processedContent() === this.processedContent().reverse();
+        if (this.letters()) {
+            return this.processedContent() === this.processedContent().reverse();
+        } else {
+            return false;
+        }
     }
 }
 
